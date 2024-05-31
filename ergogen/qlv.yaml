@@ -248,9 +248,9 @@ outlines:
         - ref: matrix_inner_top
           shift: [pkx, pky]
         - ref: matrix_inner_bottom
-          shift: [pkx, -1.2ky]
+          shift: [pkx, -1ky]
         - ref: thumb_outer
-          shift: [pkx, 0.7ky]
+          shift: [pkx, ky]
         - ref: thumb_outer
           shift: [pkx, -pky]
         - ref: thumb_tucky
@@ -280,9 +280,9 @@ outlines:
         - ref: mirror_matrix_inner_top
           shift: [pkx, pky]
         - ref: mirror_matrix_inner_bottom
-          shift: [pkx, -1.2ky]
+          shift: [pkx, -1ky]
         - ref: mirror_thumb_outer
-          shift: [pkx, 0.7ky]
+          shift: [pkx, ky]
         - ref: mirror_thumb_outer
           shift: [pkx, -pky]
         - ref: mirror_thumb_tucky
