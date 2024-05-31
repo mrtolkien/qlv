@@ -1,0 +1,12 @@
+{
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "ergogen/qlv.yaml",
+        "isAsync": true,
+        "cmd": "bunx ergogen ergogen/qlv.yaml -o ergogen/output  --debug"
+      }
+    ]
+  },
+  "svg.preview.background": "custom"
+}
