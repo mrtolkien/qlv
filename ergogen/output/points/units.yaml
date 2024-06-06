@@ -17,7 +17,7 @@ px: 23.5
 py: 22.5
 pkx: 12.025
 pky: 11.375
-angle: 25
+angle: 27.5
 mid_distance: 13
 sf: 21.5
 pinky_ring_spread: 22
@@ -32,11 +32,11 @@ pinky_splay: 6
 pinky_adj: -3
 ring_splay: 3
 ring_adj: -8
-thumb_x_shift: 0
-thumb_y_shift: -23.5
-thumb_starting_splay: -15
+thumb_x_shift: -1
+thumb_y_shift: -21.5
+thumb_starting_splay: -5
 thumb_home_spread: 18.5
-thumb_home_splay: -10
-thumb_outer_spread: 20.5
-thumb_outer_splay: -15
+thumb_home_splay: -5
+thumb_outer_spread: 18.5
+thumb_outer_splay: -30
 center_height: -26.25

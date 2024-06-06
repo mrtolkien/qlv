@@ -7,7 +7,7 @@ units:
     py: ky+5
     pkx: 0.65kx
     pky: 0.65ky
-    angle: 25
+    angle: 27.5
     mid_distance: 13
     sf: 21.5
     pinky_ring_spread: kx + 3.5
@@ -22,13 +22,13 @@ units:
     pinky_adj: -3
     ring_splay: 3
     ring_adj: -8
-    thumb_x_shift: 0
-    thumb_y_shift: '-(kx + 5)'
-    thumb_starting_splay: -15
+    thumb_x_shift: -1
+    thumb_y_shift: '-(kx + 3)'
+    thumb_starting_splay: -5
     thumb_home_spread: kx
-    thumb_home_splay: -10
-    thumb_outer_spread: kx + 2
-    thumb_outer_splay: -15
+    thumb_home_splay: -5
+    thumb_outer_spread: kx
+    thumb_outer_splay: -30
     center_height: '-1.5ky'
 points:
     zones:

@@ -15,7 +15,7 @@ units:
   pkx: 0.65kx
   pky: 0.65ky
 
-  angle: 25 # Angle between halves
+  angle: 27.5 # Angle between halves
   mid_distance: 13
   sf: 21.5 # Switch footprint (square)
 
@@ -37,14 +37,14 @@ units:
   ring_adj: -8
 
   # Thumb
-  thumb_x_shift: 0
-  thumb_y_shift: -(kx + 5)
+  thumb_x_shift: -1
+  thumb_y_shift: -(kx + 3)
 
-  thumb_starting_splay: -15
+  thumb_starting_splay: -5
   thumb_home_spread: kx
-  thumb_home_splay: -10
-  thumb_outer_spread: kx + 2
-  thumb_outer_splay: -15
+  thumb_home_splay: -5
+  thumb_outer_spread: kx
+  thumb_outer_splay: -30
 
   # PCB stuff
   center_height: -1.5ky
