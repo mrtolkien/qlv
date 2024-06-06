@@ -4,43 +4,63 @@ units:
   # Standard keys (vertical-only columns)
   capx: cx # Key cap size horizontal
   capy: cy # Key cap size vertical
-  kx: capx + 2 # Key spacing horizontal
-  ky: capy + 0.5 # Key spacing vertical
+
+  kx: capx + .5 # Minimum key spacing horizontal
+  ky: capy + .5 # Minimum key spacing vertical
+
   px: kx+5
   py: ky+5
 
   # half padded key spacing for board polygon
-  pkx: 0.6kx
-  pky: 0.6ky
-
-  # Small keys (not used atm)
-  smallcapx: 16.5 # Small key cap size horizontal
-  smallcapy: 16.5 # Small key cap size vertical
-  smallkx: smallcapx + 0.5 # Small key spacing horizontal
-  smallky: smallcapy + 0.5 # Small key spacing vertical
+  pkx: 0.65kx
+  pky: 0.65ky
 
   angle: 25 # Angle between halves
-  pinky_stagger: 5/4ky
+  mid_distance: 13
+  sf: 21.5 # Switch footprint (square)
+
+  # TODO This should be between home-row keys and not bottom ones
+  # Currently roughly compensating by hand
+  pinky_ring_spread: kx + 3.5
+  ring_middle_spread: kx
+  middle_index_spread: kx
+  index_inner_spread: kx
+
+  pinky_stagger: 12.5
+  ring_stagger: 4.5
+  middle_stagger: -ring_stagger
+  index_stagger: -2
+
   pinky_splay: 6 # Degrees of splay between pinky and ring columns
   pinky_adj: -3 # Adjustment to compensate for splay spacing
   ring_splay: 3
   ring_adj: -8
-  # TODO Add thumb variables
 
-  sf: 21.5 # Switch footprint (square)
+  # Thumb
+  thumb_x_shift: 0
+  thumb_y_shift: -(kx + 5)
+
+  thumb_starting_splay: -15
+  thumb_home_spread: kx
+  thumb_home_splay: -10
+  thumb_outer_spread: kx + 2
+  thumb_outer_splay: -15
+
+  # PCB stuff
+  center_height: -1.5ky
 
 points:
   # Keys/Switches
   # =============
   zones.matrix:
     anchor:
-      shift: [100, -100]
+      shift: [80, -100]
     rotate: -angle + pinky_splay + ring_splay
     mirror: &mirror
       ref: matrix_inner_top
       shift: [0.5sf, 0.5sf]
-      distance: 30
-    key: &key
+      distance: mid_distance
+    key:
       width: capx
       height: capy
       spread: kx
@@ -50,11 +70,19 @@ points:
       home:
       top:
     columns:
-      pinky:
+      pinky_extension:
         rows:
-          top:
+          home:
             row_net: P0
             column_net: P8
+          home.mirror:
+            row_net: P4
+            column_net: P8
+          top.skip: true
+          bottom.skip: true
+      pinky:
+        rows:
+          top.skip: true
           home:
             row_net: P1
             column_net: P8
@@ -62,8 +90,6 @@ points:
             row_net: P2
             column_net: P8
           top.mirror:
-            row_net: P4
-            column_net: P8
           home.mirror:
             row_net: P5
             column_net: P8
@@ -73,9 +99,9 @@ points:
       ring:
         key:
           stagger: pinky_stagger
+          spread: pinky_ring_spread
           splay: -pinky_splay
           origin: [0, pinky_adj]
-          spread: 1.1kx
         rows:
           bottom:
             row_net: P2
@@ -97,7 +123,8 @@ points:
             column_net: P9
       middle:
         key:
-          stagger: 0.25ky
+          stagger: ring_stagger
+          spread: ring_middle_spread
           splay: -ring_splay
           origin: [0, ring_adj]
         rows:
@@ -121,7 +148,8 @@ points:
             column_net: P10
       index:
         key:
-          stagger: -0.25ky
+          stagger: middle_stagger
+          spread: middle_index_spread
         rows:
           bottom:
             row_net: P2
@@ -143,8 +171,8 @@ points:
             column_net: P14
       inner:
         key:
-          stagger: -0.1ky
-          spread: cx + 0.5
+          stagger: index_stagger
+          spread: index_inner_spread
         rows:
           home:
             row_net: P1
@@ -164,17 +192,21 @@ points:
           bottom.mirror:
             row_net: P6
             column_net: P15
+
   zones.thumb:
     anchor:
       ref: matrix_inner_bottom
-      shift: [0, -ky - 10]
+      shift: [thumb_x_shift, thumb_y_shift]
     mirror: *mirror
-    key: *key
+    key:
+      width: capx
+      height: capy
+      padding: ky
     columns:
-      tucky:
+      inner:
         key:
-          name: thumb_tucky
-          splay: -30
+          name: thumb_inner
+          splay: thumb_starting_splay
           row_net: P3
           column_net: P10
         key.mirror:
@@ -182,9 +214,10 @@ points:
           column_net: P10
       center:
         key:
-          splay: -10
-          origin: [-kx/2, 0]
           name: thumb_center
+          spread: thumb_home_spread
+          splay: thumb_home_splay
+          origin: [-kx/2, -kx/2]
           row_net: P3
           column_net: P14
         key.mirror:
@@ -192,9 +225,10 @@ points:
           column_net: P14
       outer:
         key:
-          splay: -10
-          origin: [-kx/2, 0]
           name: thumb_outer
+          spread: thumb_outer_spread
+          splay: thumb_outer_splay
+          origin: [-thumb_outer_spread/2, -thumb_outer_spread]
           row_net: P3
           column_net: P15
         key.mirror:
@@ -235,9 +269,9 @@ outlines:
   left_keys:
     - what: polygon
       points:
-        - ref: matrix_pinky_top
+        - ref: matrix_pinky_extension_home
           shift: [-pkx, pky]
-        - ref: matrix_pinky_top
+        - ref: matrix_pinky_extension_home
           shift: [pkx, pky]
         - ref: matrix_ring_top
           shift: [-pkx, pky]
@@ -248,28 +282,36 @@ outlines:
         - ref: matrix_inner_top
           shift: [pkx, pky]
         - ref: matrix_inner_bottom
-          shift: [pkx, -1ky]
+          shift: [pkx, -pky]
         - ref: thumb_outer
           shift: [pkx, ky]
         - ref: thumb_outer
           shift: [pkx, -pky]
-        - ref: thumb_tucky
+        - ref: thumb_center
+          shift: [0, -pky]
+        - ref: thumb_inner
           shift: [-pkx, -pky]
-        - ref: matrix_middle_bottom
-          shift: [pkx, -ky]
-        - ref: matrix_middle_bottom
-          shift: [-pkx, -ky]
+        - ref: matrix_index_bottom
+          shift: [-pkx, -pky]
+        # - ref: matrix_middle_bottom
+        #   shift: [-pkx, -pky]
+        - ref: matrix_ring_bottom
+          shift: [pkx, -pky]
         - ref: matrix_pinky_bottom
           shift: [pkx, -pky]
         - ref: matrix_pinky_bottom
+          shift: [-pkx, -pky]
+        - ref: matrix_pinky_bottom
+          shift: [-pkx, -pky+ky]
+        - ref: matrix_pinky_extension_home
           shift: [-pkx, -pky]
 
   right_keys:
     - what: polygon
       points:
-        - ref: mirror_matrix_pinky_top
+        - ref: mirror_matrix_pinky_extension_home
           shift: [-pkx, pky]
-        - ref: mirror_matrix_pinky_top
+        - ref: mirror_matrix_pinky_extension_home
           shift: [pkx, pky]
         - ref: mirror_matrix_ring_top
           shift: [-pkx, pky]
@@ -285,28 +327,38 @@ outlines:
           shift: [pkx, ky]
         - ref: mirror_thumb_outer
           shift: [pkx, -pky]
-        - ref: mirror_thumb_tucky
+        - ref: mirror_thumb_center
+          shift: [0, -pky]
+        - ref: mirror_thumb_inner
           shift: [-pkx, -pky]
-        - ref: mirror_matrix_middle_bottom
-          shift: [pkx, -ky]
-        - ref: mirror_matrix_middle_bottom
-          shift: [-pkx, -ky]
+        - ref: mirror_matrix_index_bottom
+          shift: [-pkx, -pky]
+        # - ref: mirror_matrix_middle_bottom
+        #   shift: [-pkx, -pky]
+        - ref: mirror_matrix_ring_bottom
+          shift: [pkx, -pky]
         - ref: mirror_matrix_pinky_bottom
           shift: [pkx, -pky]
         - ref: mirror_matrix_pinky_bottom
+          shift: [-pkx, -pky]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [-pkx, -pky+ky]
+        - ref: mirror_matrix_pinky_extension_home
           shift: [-pkx, -pky]
 
   _center:
     - what: polygon
       points:
         - ref: matrix_inner_top
-          shift: [-kx, 2ky]
+          shift: [-kx, center_height]
         - ref: mirror_matrix_inner_top
-          shift: [-kx, 2ky]
-        - ref: mirror_matrix_inner_bottom
-          shift: [0, -pky]
-        - ref: matrix_inner_bottom
-          shift: [0, -pky]
+          shift: [-kx, center_height]
+        - ref: mirror_thumb_inner
+        - ref: mirror_thumb_outer
+          shift: [5, -5]
+        - ref: thumb_outer
+          shift: [5, -5]
+        - ref: thumb_inner
 
   _board_old:
     - name: _center
@@ -357,7 +409,7 @@ pcbs:
           orientation: "up"
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
-          shift: [0, 1.2ky]
+          shift: [0, center_height - 10]
           rotate: -90
       reset:
         what: button
@@ -366,5 +418,5 @@ pcbs:
           to: RST
         where:
           ref.aggregate.parts: [matrix_index_bottom, mirror_matrix_index_bottom]
-          shift: [25, 1.2ky+35]
+          shift: [20, center_height - 10 + 30]
       # TODO Add jstph battery header
