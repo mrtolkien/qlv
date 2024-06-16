@@ -7,14 +7,14 @@ units:
     py: ky+5
     pkx: 0.65kx
     pky: 0.65ky
-    angle: 27.5
+    angle: 29
     mid_distance: 13
     sf: 21.5
     pinky_ring_spread: kx + 3.5
     ring_middle_spread: kx
     middle_index_spread: kx
     index_inner_spread: kx
-    pinky_stagger: 12.5
+    pinky_stagger: 11.5
     ring_stagger: 4.5
     middle_stagger: '-ring_stagger'
     index_stagger: -2
@@ -22,12 +22,12 @@ units:
     pinky_adj: -3
     ring_splay: 3
     ring_adj: -8
-    thumb_x_shift: -1
+    thumb_x_shift: -5
     thumb_y_shift: '-(kx + 3)'
-    thumb_starting_splay: -5
+    thumb_starting_splay: 0
     thumb_home_spread: kx
-    thumb_home_splay: -5
-    thumb_outer_spread: kx
+    thumb_home_splay: -3
+    thumb_outer_spread: kx*.9
     thumb_outer_splay: -30
     center_height: '-1.5ky'
 points:
@@ -57,11 +57,11 @@ points:
                 pinky_extension:
                     rows:
                         home:
-                            row_net: P0
-                            column_net: P8
+                            row_net: P3
+                            column_net: P7
                             mirror:
-                                row_net: P4
-                                column_net: P8
+                                row_net: P19
+                                column_net: P7
                         top:
                             skip: true
                         bottom:
@@ -70,19 +70,18 @@ points:
                     rows:
                         top:
                             skip: true
-                            mirror: null
                         home:
-                            row_net: P1
-                            column_net: P8
+                            row_net: P4
+                            column_net: P7
                             mirror:
-                                row_net: P5
-                                column_net: P8
+                                row_net: P18
+                                column_net: P7
                         bottom:
-                            row_net: P2
-                            column_net: P8
+                            row_net: P5
+                            column_net: P7
                             mirror:
-                                row_net: P6
-                                column_net: P8
+                                row_net: P15
+                                column_net: P7
                 ring:
                     key:
                         stagger: pinky_stagger
@@ -93,23 +92,23 @@ points:
                             - pinky_adj
                     rows:
                         bottom:
-                            row_net: P2
-                            column_net: P9
+                            row_net: P5
+                            column_net: P8
                             mirror:
-                                row_net: P6
-                                column_net: P9
+                                row_net: P15
+                                column_net: P8
                         home:
-                            row_net: P1
-                            column_net: P9
+                            row_net: P4
+                            column_net: P8
                             mirror:
-                                row_net: P5
-                                column_net: P9
+                                row_net: P18
+                                column_net: P8
                         top:
-                            row_net: P0
-                            column_net: P9
+                            row_net: P3
+                            column_net: P8
                             mirror:
-                                row_net: P4
-                                column_net: P9
+                                row_net: P19
+                                column_net: P8
                 middle:
                     key:
                         stagger: ring_stagger
@@ -120,69 +119,69 @@ points:
                             - ring_adj
                     rows:
                         bottom:
-                            row_net: P2
-                            column_net: P10
+                            row_net: P5
+                            column_net: P9
                             mirror:
-                                row_net: P6
-                                column_net: P10
+                                row_net: P15
+                                column_net: P9
                         home:
-                            row_net: P1
-                            column_net: P10
+                            row_net: P4
+                            column_net: P9
                             mirror:
-                                row_net: P5
-                                column_net: P10
+                                row_net: P18
+                                column_net: P9
                         top:
-                            row_net: P0
-                            column_net: P10
+                            row_net: P3
+                            column_net: P9
                             mirror:
-                                row_net: P4
-                                column_net: P10
+                                row_net: P19
+                                column_net: P9
                 index:
                     key:
                         stagger: middle_stagger
                         spread: middle_index_spread
                     rows:
                         bottom:
-                            row_net: P2
-                            column_net: P14
+                            row_net: P5
+                            column_net: P16
                             mirror:
-                                row_net: P6
-                                column_net: P14
+                                row_net: P15
+                                column_net: P16
                         home:
-                            row_net: P1
-                            column_net: P14
+                            row_net: P4
+                            column_net: P16
                             mirror:
-                                row_net: P5
-                                column_net: P14
+                                row_net: P18
+                                column_net: P16
                         top:
-                            row_net: P0
-                            column_net: P14
+                            row_net: P3
+                            column_net: P16
                             mirror:
-                                row_net: P4
-                                column_net: P14
+                                row_net: P19
+                                column_net: P16
                 inner:
                     key:
                         stagger: index_stagger
                         spread: index_inner_spread
                     rows:
                         home:
-                            row_net: P1
-                            column_net: P15
+                            row_net: P4
+                            column_net: P10
                             mirror:
-                                row_net: P5
-                                column_net: P15
+                                row_net: P18
+                                column_net: P10
                         top:
-                            row_net: P0
-                            column_net: P15
+                            row_net: P3
+                            column_net: P10
                             mirror:
-                                row_net: P4
-                                column_net: P15
+                                row_net: P19
+                                column_net: P10
                         bottom:
-                            row_net: P2
-                            column_net: P15
+                            row_net: P5
+                            column_net: P10
                             mirror:
-                                row_net: P6
-                                column_net: P15
+                                row_net: P15
+                                column_net: P10
         thumb:
             anchor:
                 ref: matrix_inner_bottom
@@ -204,11 +203,11 @@ points:
                     key:
                         name: thumb_inner
                         splay: thumb_starting_splay
-                        row_net: P3
-                        column_net: P10
+                        row_net: P6
+                        column_net: P9
                         mirror:
-                            row_net: P7
-                            column_net: P10
+                            row_net: P14
+                            column_net: P9
                 center:
                     key:
                         name: thumb_center
@@ -217,11 +216,11 @@ points:
                         origin:
                             - '-kx/2'
                             - '-kx/2'
-                        row_net: P3
-                        column_net: P14
+                        row_net: P6
+                        column_net: P16
                         mirror:
-                            row_net: P7
-                            column_net: P14
+                            row_net: P14
+                            column_net: P16
                 outer:
                     key:
                         name: thumb_outer
@@ -230,11 +229,11 @@ points:
                         origin:
                             - '-thumb_outer_spread/2'
                             - '-thumb_outer_spread'
-                        row_net: P3
-                        column_net: P15
+                        row_net: P6
+                        column_net: P10
                         mirror:
-                            row_net: P7
-                            column_net: P15
+                            row_net: P14
+                            column_net: P10
 outlines:
     _keys:
         -
@@ -282,7 +281,7 @@ outlines:
                 -
                     ref: matrix_pinky_extension_home
                     shift:
-                        - pkx
+                        - pkx*2.5
                         - pky
                 -
                     ref: matrix_ring_top
@@ -332,12 +331,12 @@ outlines:
                 -
                     ref: matrix_index_bottom
                     shift:
-                        - '-pkx'
+                        - 0
                         - '-pky'
                 -
                     ref: matrix_ring_bottom
                     shift:
-                        - pkx
+                        - 0
                         - '-pky'
                 -
                     ref: matrix_pinky_bottom
@@ -371,7 +370,7 @@ outlines:
                 -
                     ref: mirror_matrix_pinky_extension_home
                     shift:
-                        - pkx
+                        - pkx*2.5
                         - pky
                 -
                     ref: mirror_matrix_ring_top
@@ -421,12 +420,12 @@ outlines:
                 -
                     ref: mirror_matrix_index_bottom
                     shift:
-                        - '-pkx'
+                        - 0
                         - '-pky'
                 -
                     ref: mirror_matrix_ring_bottom
                     shift:
-                        - pkx
+                        - 0
                         - '-pky'
                 -
                     ref: mirror_matrix_pinky_bottom
@@ -548,5 +547,20 @@ pcbs:
                                 - matrix_index_bottom
                                 - mirror_matrix_index_bottom
                     shift:
-                        - 20
+                        - 15
                         - center_height - 10 + 30
+            battery:
+                what: jstph
+                params:
+                    pos: RAW
+                    neg: GND
+                where:
+                    ref:
+                        aggregate:
+                            parts:
+                                - matrix_inner_top
+                                - mirror_matrix_inner_top
+                    shift:
+                        - 14
+                        - -15
+                    rotate: -180
