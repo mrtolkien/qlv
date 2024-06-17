@@ -448,3 +448,16 @@ pcbs:
         where:
           ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
           shift: [25, -25]
+
+      holeTopLeft:
+        what: mountinghole
+        where:
+          ref.aggregate.parts: [matrix_pinky_home, matrix_ring_home]
+          shift: [-0.5, 4]
+
+      holeTopRight:
+        what: mountinghole
+        where:
+          ref.aggregate.parts:
+            [mirror_matrix_pinky_home, mirror_matrix_ring_home]
+          shift: [.5, 4]
