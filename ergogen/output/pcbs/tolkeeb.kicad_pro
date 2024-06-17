@@ -220,7 +220,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "tutorial.kicad_pro",
+    "filename": "tolkeeb.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -255,11 +255,11 @@
       },
       {
         "netclass": "Default",
-        "pattern": "P7"
+        "pattern": "pinky_extension_home"
       },
       {
         "netclass": "Default",
-        "pattern": "pinky_extension_home"
+        "pattern": "P3"
       },
       {
         "netclass": "Default",
@@ -267,11 +267,15 @@
       },
       {
         "netclass": "Default",
+        "pattern": "P5"
+      },
+      {
+        "netclass": "Default",
         "pattern": "pinky_home"
       },
       {
         "netclass": "Default",
-        "pattern": "P8"
+        "pattern": "P4"
       },
       {
         "netclass": "Default",
@@ -287,10 +291,6 @@
       },
       {
         "netclass": "Default",
-        "pattern": "P9"
-      },
-      {
-        "netclass": "Default",
         "pattern": "middle_bottom"
       },
       {
@@ -303,10 +303,6 @@
       },
       {
         "netclass": "Default",
-        "pattern": "P16"
-      },
-      {
-        "netclass": "Default",
         "pattern": "index_bottom"
       },
       {
@@ -316,10 +312,6 @@
       {
         "netclass": "Default",
         "pattern": "index_top"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "P10"
       },
       {
         "netclass": "Default",
@@ -339,11 +331,23 @@
       },
       {
         "netclass": "Default",
+        "pattern": "P19"
+      },
+      {
+        "netclass": "Default",
         "pattern": "mirror_pinky_bottom"
       },
       {
         "netclass": "Default",
+        "pattern": "P15"
+      },
+      {
+        "netclass": "Default",
         "pattern": "mirror_pinky_home"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "P18"
       },
       {
         "netclass": "Default",
@@ -399,6 +403,10 @@
       },
       {
         "netclass": "Default",
+        "pattern": "P6"
+      },
+      {
+        "netclass": "Default",
         "pattern": "center_default"
       },
       {
@@ -411,11 +419,35 @@
       },
       {
         "netclass": "Default",
+        "pattern": "P14"
+      },
+      {
+        "netclass": "Default",
         "pattern": "mirror_center_default"
       },
       {
         "netclass": "Default",
         "pattern": "mirror_outer_default"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "P7"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "P8"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "P9"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "P16"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "P10"
       },
       {
         "netclass": "Default",
@@ -443,22 +475,6 @@
       },
       {
         "netclass": "Default",
-        "pattern": "P19"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "P18"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "P15"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "P14"
-      },
-      {
-        "netclass": "Default",
         "pattern": "P1"
       },
       {
@@ -468,22 +484,6 @@
       {
         "netclass": "Default",
         "pattern": "P2"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "P3"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "P4"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "P5"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "P6"
       }
     ]
   },

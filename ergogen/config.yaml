@@ -249,14 +249,6 @@ outlines:
         - /thumb_.*/
       size: [kx+5, ky]
 
-  _key_outline_old:
-    - what: rectangle
-      size: sf+4
-      where:
-        - /matrix_.*/
-        - /thumb_.*/
-      fillet: 5
-
   _key_outline:
     - what: rectangle
       size: sf+4
@@ -380,29 +372,43 @@ outlines:
       name: _keys
 
 pcbs:
-  tutorial:
+  tolkeeb:
     outlines:
       main:
         outline: board
+
     footprints:
-      choc_hotswap:
+      switches:
         what: choc
         where: true
         params:
           keycaps: true
           reverse: false
           hotswap: true
-          from: "{{column_net}}"
-          to: "{{colrow}}"
-
-      diode:
-        what: diode
-        where: true
-        params:
           from: "{{colrow}}"
           to: "{{row_net}}"
+
+      switch_bonus_goodies:
+        what: choc_bonus_goodies
+        where: true
+        params:
+          hotswap_silk_screen: true
+          # bottom_plate_cutout: true
+
+      diodes:
+        what: better_diode
+        where: true
         adjust:
-          shift: [0, -5]
+          shift: [0, -4.7]
+          rotate: 180
+        params:
+          from: "{{colrow}}"
+          to: "{{column_net}}"
+          front: true
+          back: false
+          through_hole: false
+          via_from: true
+          via_to: true
 
       promicro:
         what: promicro
@@ -410,7 +416,7 @@ pcbs:
           orientation: "up"
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
-          shift: [0, center_height - 10]
+          shift: [0, center_height - 15]
           rotate: -90
 
       reset:
@@ -420,7 +426,7 @@ pcbs:
           to: RST
         where:
           ref.aggregate.parts: [matrix_index_bottom, mirror_matrix_index_bottom]
-          shift: [15, center_height - 10 + 30]
+          shift: [0, -48]
 
       battery:
         what: jstph
@@ -429,5 +435,16 @@ pcbs:
           neg: GND
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
-          shift: [14, -15]
-          rotate: -180
+          shift: [0, -16]
+
+      holeLeft:
+        what: mountinghole
+        where:
+          ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+          shift: [-25, -25]
+
+      holeRight:
+        what: mountinghole
+        where:
+          ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+          shift: [25, -25]

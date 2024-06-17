@@ -2,9 +2,9 @@
   "emeraldwalk.runonsave": {
     "commands": [
       {
-        "match": "ergogen/qlv.yaml",
+        "match": "ergogen/config.yaml",
         "isAsync": true,
-        "cmd": "bunx ergogen ergogen/qlv.yaml -o ergogen/output  --debug"
+        "cmd": "bunx ergogen ergogen -o ergogen/output  --debug"
       }
     ]
   },
